@@ -44,7 +44,7 @@ class WebConfig(
     override fun addInterceptors(registry: InterceptorRegistry) {
         registry.addInterceptor(authenticationInterceptor)
             .addPathPatterns("/**")
-            .excludePathPatterns("/users/login", "/users/register")
+            .excludePathPatterns("/users/login", "/users/register", "/swagger-ui/**", "/v3/api-docs/**")
     }
 
     override fun configureMessageConverters(converters: MutableList<HttpMessageConverter<*>>) {
