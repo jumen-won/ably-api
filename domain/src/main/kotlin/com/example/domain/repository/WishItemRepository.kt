@@ -10,12 +10,15 @@ import org.springframework.stereotype.Repository
 @Repository
 interface WishItemRepository : JpaRepository<WishItem, Long> {
     fun findAllByWishListIdIn(wishListIds: List<Long>): List<WishItem>
-    @Query("""
+
+    @Query(
+        """
     SELECT wi
     FROM WishItem wi
     JOIN FETCH wi.item
     WHERE wi.wishListId = :wishListId
-    """)
+    """
+    )
     fun findByWishListId(wishListId: Long, pageable: Pageable): Page<WishItem>
     fun existsByUserIdAndItemCode(userId: Long, itemCode: String): Boolean
     fun deleteByUserIdAndItemCode(userId: Long, itemCode: String)

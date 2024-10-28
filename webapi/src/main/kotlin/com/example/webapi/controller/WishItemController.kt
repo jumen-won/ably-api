@@ -57,6 +57,6 @@ class WishItemController(
     )
 
     data class DeleteWishItemRequest(
-        val itemCode: String,
+        val itemCode: String
     )
 }

@@ -2,6 +2,7 @@ package com.example.webapi.facade
 
 import com.example.domain.base.common.PageQueryResult
 import com.example.domain.entity.WishList
+import com.example.domain.query.GetWishItemQuery
 import com.example.domain.query.GetWishListQuery
 import com.example.domain.usecase.WishListUseCase
 import com.example.webapi.base.exception.WishListAlreadyExistsException
@@ -17,13 +18,14 @@ import org.junit.jupiter.api.assertThrows
 class WishListFacadeTest {
     private var query: GetWishListQuery = mockk(relaxed = true)
     private var wishListUseCase: WishListUseCase = mockk(relaxed = true)
+    private var wishItemQuery: GetWishItemQuery = mockk(relaxed = true)
 
     private lateinit var sut: WishListFacade
 
     @BeforeEach
     fun beforeEach() {
         clearAllMocks()
-        sut = WishListFacade(query, wishListUseCase)
+        sut = WishListFacade(query, wishListUseCase, wishItemQuery)
     }
 
     @Test
@@ -33,7 +35,7 @@ class WishListFacadeTest {
         val page = 0
         val size = 10
         val wishList = PageQueryResult(
-            content = listOf(WishList(id = 1L, userId = userId, title = "title")),
+            content = buildList<WishList> { WishList(id = 1L, userId = userId, title = "title") },
             hasNext = false,
             totalElements = 1,
             totalPages = 1

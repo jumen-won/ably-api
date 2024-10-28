@@ -1,6 +1,5 @@
 package com.example.webapi.facade
 
-import com.example.domain.entity.User
 import com.example.domain.query.GetUserQuery
 import com.example.domain.usecase.UserUseCase
 import com.example.webapi.base.exception.UserEmailNotFoundException

@@ -4,7 +4,6 @@ import com.example.domain.base.exception.ItemNotFoundDomainException
 import com.example.domain.entity.WishItem
 import com.example.domain.repository.ItemRepository
 import com.example.domain.repository.WishItemRepository
-import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 

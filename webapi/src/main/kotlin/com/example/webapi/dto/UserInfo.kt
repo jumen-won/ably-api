@@ -1,7 +1,6 @@
 package com.example.webapi.dto
 
 import com.example.domain.entity.User
-import com.example.domain.entity.WishList
 import io.swagger.v3.oas.annotations.media.Schema
 import java.time.LocalDateTime
 
@@ -13,7 +12,7 @@ data class UserInfo(
     @Schema(description = "생성 시각")
     val createdAt: LocalDateTime,
     @Schema(description = "수정 시각")
-    val updatedAt: LocalDateTime,
+    val updatedAt: LocalDateTime
 ) {
     companion object {
         operator fun invoke(entity: User): UserInfo {
@@ -21,7 +20,7 @@ data class UserInfo(
                 id = entity.id,
                 email = entity.email,
                 createdAt = entity.createdAt,
-                updatedAt = entity.updatedAt,
+                updatedAt = entity.updatedAt
             )
         }
     }

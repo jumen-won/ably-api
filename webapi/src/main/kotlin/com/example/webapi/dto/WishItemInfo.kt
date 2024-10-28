@@ -17,12 +17,11 @@ data class WishItemInfo(
     @Schema(description = "생성 시각")
     val createdAt: LocalDateTime,
     @Schema(description = "수정 시각")
-    val updatedAt: LocalDateTime,
+    val updatedAt: LocalDateTime
 )
 fun WishItem.toWishItemInfo(): WishItemInfo {
     return WishItemInfo(this.id, this.item.toItemInfo(), this.wishListId, this.userId, this.createdAt, this.updatedAt)
 }
-
 
 data class ItemInfo(
     @Schema(description = "상품 코드")
@@ -34,7 +33,7 @@ data class ItemInfo(
     @Schema(description = "생성 시각")
     val createdAt: LocalDateTime,
     @Schema(description = "수정 시각")
-    val updatedAt: LocalDateTime,
+    val updatedAt: LocalDateTime
 ) {
     companion object {
         operator fun invoke(entity: Item): ItemInfo {
@@ -43,7 +42,7 @@ data class ItemInfo(
                 url = entity.url,
                 price = entity.price,
                 createdAt = entity.createdAt,
-                updatedAt = entity.updatedAt,
+                updatedAt = entity.updatedAt
             )
         }
     }

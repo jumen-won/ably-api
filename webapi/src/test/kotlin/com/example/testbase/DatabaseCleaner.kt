@@ -1,5 +1,6 @@
 package com.example.testbase
 
+import com.example.domain.repository.ItemRepository
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Component
@@ -19,7 +20,7 @@ class DatabaseCleaner(
     }
 
     private fun cleanMySQL() {
-        this.repositories.forEach {
+        this.repositories.filterNot { it is ItemRepository }.forEach {
             try {
                 it.deleteAll()
             } catch (e: Exception) {

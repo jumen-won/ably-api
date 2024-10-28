@@ -6,6 +6,7 @@ import com.example.domain.usecase.UserUseCase
 import com.example.webapi.base.exception.UserEmailNotFoundException
 import com.example.webapi.base.exception.UserPasswordNotMatchedException
 import com.example.webapi.base.security.JwtTokenProvider
+import com.example.webapi.dto.toUserInfo
 import io.mockk.clearAllMocks
 import io.mockk.every
 import io.mockk.mockk
@@ -91,7 +92,7 @@ class UserFacadeTest {
         val result = sut.get(userId)
 
         // then
-        assertEquals(user, result)
+        assertEquals(user.toUserInfo(), result)
     }
 
     @Test
@@ -110,6 +111,6 @@ class UserFacadeTest {
         val result = sut.register(email, password)
 
         // then
-        assertEquals(user, result)
+        assertEquals(user.toUserInfo(), result)
     }
 }
