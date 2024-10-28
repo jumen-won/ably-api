@@ -1,0 +1,72 @@
+### 회원가입
+POST http://localhost:8080/api/users/register
+Content-Type: application/json
+
+{
+  "email": "jumen@lbox.kr",
+  "password": "qwer1234"
+}
+
+### 로그인
+POST http://localhost:8080/api/users/login
+Content-Type: application/json
+
+{
+  "email": "jumen@lbox.kr",
+  "password": "qwer1234"
+}
+
+> {%
+    client.global.set("X-Access-Token", response.headers.valueOf("X-Access-Token"));
+%}
+
+### 유저 조회
+GET http://localhost:8080/api/users
+Authorization: Bearer {{X-Access-Token}}
+
+
+### 찜 서랍 추가
+POST http://localhost:8080/api/wishlists
+Authorization: Bearer {{X-Access-Token}}
+Content-Type: application/json
+
+{
+  "title": "바지 서랍"
+}
+
+### 찜 서랍 조회
+GET http://localhost:8080/api/wishlists?page=0&size=10
+Authorization: Bearer {{X-Access-Token}}
+
+### 찜 서랍 삭제
+DELETE http://localhost:8080/api/wishlists
+Authorization: Bearer {{X-Access-Token}}
+Content-Type: application/json
+
+{
+  "wishListId": 6
+}
+
+### 찜 상품 추가
+POST http://localhost:8080/api/wishitems
+Authorization: Bearer {{X-Access-Token}}
+Content-Type: application/json
+
+{
+  "itemCode": "product_112",
+  "wishListId": 2
+}
+
+### 찜 상품 목록 조회
+GET http://localhost:8080/api/wishitems?wishListId=2&page=0&size=10
+Authorization: Bearer {{X-Access-Token}}
+
+
+### 찜 상품 서랍에서 삭제
+DELETE http://localhost:8080/api/wishitems
+Authorization: Bearer {{X-Access-Token}}
+Content-Type: application/json
+
+{
+  "itemCode": "product_110"
+}

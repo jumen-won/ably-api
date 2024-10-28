@@ -1,0 +1,46 @@
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ably?serverTimezone=Asia/Seoul&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+    hikari:
+      maximum-pool-size: 20
+      connection-timeout: 5000
+      auto-commit: false
+      # reference: https://github.com/brettwooldridge/HikariCP/wiki/MySQL-Configuration
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        default_batch_fetch_size: 3
+---
+
+spring:
+  config:
+    activate:
+      on-profile: test
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: _
+    username: _
+    password: _
+    hikari:
+      maximum-pool-size: 20
+      connection-timeout: 5000
+      auto-commit: false
+      # reference: https://github.com/brettwooldridge/HikariCP/wiki/MySQL-Configuration
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true

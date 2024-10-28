@@ -1,0 +1,15 @@
+spring:
+  config:
+    import:
+      - 'classpath:application-domain.yml'
+  flyway:
+    enabled: true
+    url: jdbc:mysql://localhost:3306/ably
+    locations: classpath:db/flyway
+    user: root
+    password: root
+
+jwt:
+  issuer: ably
+  access-token-expire-minutes: 60
+  secret: 'secret'
